@@ -1,5 +1,8 @@
 # JARVIS
 
+> **Created by Antono**
+
+
 Real-time person intelligence platform. Point smart glasses at someone, get a full dossier in seconds.
 
 **Glasses camera → facial recognition → browser agent swarm → social enrichment → corkboard UI**
