@@ -1,9 +1,6 @@
 name: Auto commit
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     # setiap 30 menit
     - cron: "10-59/30 * * * *"
