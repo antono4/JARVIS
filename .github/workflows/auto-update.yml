@@ -10,13 +10,14 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Grup yang sama dengan C1/C2/C3 -> run mengantre, tidak saling menimpa README.
+  # Semua workflow penulis README berbagi grup ini agar tidak saling bentrok.
   group: readme-updater
   cancel-in-progress: false
 
 jobs:
   update-repo:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
@@ -41,6 +42,7 @@ jobs:
             git reset --quiet --hard "origin/$BRANCH"
 
             [ -f README.md ] || : > README.md
+            # Buang stempel waktu lama agar tidak menumpuk, lalu tulis yang baru.
             grep -v '^Last updated: ' README.md > README.tmp || true
             mv README.tmp README.md
             printf 'Last updated: %s\n' "$TIMESTAMP" >> README.md
